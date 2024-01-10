@@ -1,3 +1,25 @@
+.cart {
+    margin-top: 2em;
+    padding: 1em;
+    border: 1px solid #ddd;
+    background: white;
+}
+
+.cart h2 {
+    margin: 0 0 1em 0;
+}
+
+#cart-items {
+    list-style-type: none;
+    padding: 0;
+}
+
+#cart-items li {
+    margin-bottom: 0.5em;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid #eee;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
