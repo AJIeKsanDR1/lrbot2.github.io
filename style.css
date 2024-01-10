@@ -20,6 +20,7 @@ header h1, footer p {
 
 main {
     padding: 1em;
+    background: #333;
 }
 
 .products {
@@ -32,7 +33,7 @@ main {
 .product {
     border: 1px solid #ddd;
     padding: 1em;
-    background: white; /* Белый фон для продуктов */
+    background: #333; /* Белый фон для продуктов */
     color: orange; /* Оранжевый текст для продуктов */
 }
 
@@ -44,7 +45,7 @@ main {
 }
 
 button {
-    background: #5cb85c;
+    background: #323;
     color: white; /* Белый текст на кнопках */
     border: none;
     padding: 0.5em 1em;
@@ -53,14 +54,14 @@ button {
 }
 
 button:hover {
-    background: #4cae4c;
+    background: orange;
 }
 
 .cart {
     margin-top: 2em;
     padding: 1em;
     border: 1px solid #ddd;
-    background: white; /* Белый фон для корзины */
+    background: #333;
     color: orange; /* Оранжевый текст для корзины */
 }
 
