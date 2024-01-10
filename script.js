@@ -1,6 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     const cart = [];
 
+
+    document.getElementById('clear-cart-button').addEventListener('click', () => {
+        clearCart();
+    });
+
     document.querySelectorAll('.product button').forEach(button => {
         button.addEventListener('click', (e) => {
             const product = e.target.parentElement;
@@ -43,5 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function removeFromCart(itemIndex) {
         cart.splice(itemIndex, 1);
         updateCart();
+    }
+
+    function clearCart() {
+        cart.length = 0; // Очищаем массив корзины
+        updateCart(); // Обновляем отображение корзины
     }
 });
