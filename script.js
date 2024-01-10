@@ -5,11 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', (e) => {
             const product = e.target.parentElement;
             const productName = product.querySelector('h2').innerText;
-            const productPrice = product.querySelector('p').innerText.split(':')[1].trim().split(' ')[0];
+            const productPriceText = product.querySelectorAll('p')[1].innerText; // Исправление для получения текста цены
+            const productPrice = parseInt(productPriceText.split(':')[1].trim().split(' ')[0]);
             
-            // Добавляем товар в корзину с уникальным ID
-            const productId = Date.now(); // Простой способ генерации уникального ID
-            cart.push({ id: productId, name: productName, price: parseInt(productPrice) });
+            cart.push({ name: productName, price: productPrice });
             updateCart();
         });
     });
@@ -21,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cartItems.innerHTML = '';
         let total = 0;
 
-        cart.forEach(item => {
+        cart.forEach((item, index) => {
             total += item.price;
             const itemElement = document.createElement('li');
             itemElement.innerText = `${item.name} - ${item.price} ₸`;
@@ -29,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const removeButton = document.createElement('button');
             removeButton.innerText = 'Удалить';
             removeButton.onclick = function() {
-                removeFromCart(item.id);
+                removeFromCart(index);
             };
 
             itemElement.appendChild(removeButton);
@@ -39,11 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
         cartTotal.innerText = total;
     }
 
-    function removeFromCart(productId) {
-        const index = cart.findIndex(item => item.id === productId);
-        if (index > -1) {
-            cart.splice(index, 1);
-            updateCart();
-        }
+    function removeFromCart(itemIndex) {
+        cart.splice(itemIndex, 1);
+        updateCart();
     }
 });
