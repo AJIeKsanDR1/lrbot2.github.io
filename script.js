@@ -5,9 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', (e) => {
             const product = e.target.parentElement;
             const productName = product.querySelector('h2').innerText;
-            const productPriceText = product.querySelectorAll('p')[1].innerText; // Исправление для получения текста цены
-            const productPrice = parseInt(productPriceText.split(':')[1].trim().split(' ')[0]);
-            
+            const productPriceText = product.querySelectorAll('p')[1].innerText; // Получаем текст с ценой
+
+            // Извлекаем числовое значение из строки цены
+            const productPrice = parseInt(productPriceText.replace(/[^0-9]/g, ''));
+
             cart.push({ name: productName, price: productPrice });
             updateCart();
         });
