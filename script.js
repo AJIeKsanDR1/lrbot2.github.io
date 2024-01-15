@@ -1,3 +1,55 @@
+// Получение элементов
+var modal = document.getElementById("paymentModal");
+var btn = document.getElementById("checkout-button");
+var span = document.getElementsByClassName("close")[0];
+
+// Открывать модальное окно при нажатии на кнопку
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// Закрыть модальное окно при клике на (x)
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// Закрыть модальное окно при клике вне его
+window.onclick = function(event) {
+    if (event.target == modal) {
+
+
+document.getElementById('paymentForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Собираем данные из формы
+    var paymentData = {
+        cardNumber: document.getElementById('cardNumber').value,
+        cvv: document.getElementById('cvv').value,
+        expiryDate: document.getElementById('expiryDate').value,
+        phone: document.getElementById('phone').value,
+        email: document.getElementById('email').value,
+        cart: cart // предполагается, что у вас есть массив cart с товарами
+    };
+
+    // Отправка данных на сервер
+    fetch('YOUR_SERVER_ENDPOINT/payment', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(paymentData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert('Оплата прошла успешно. Чек отправлен на вашу почту.');
+        modal.style.display = "none";
+        clearCart(); // очистка корзины после оплаты
+    })
+    .catch((error) => {
+        console.error('Ошибка при оплате:', error);
+    });
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     const cart = [];
 
