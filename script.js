@@ -32,7 +32,7 @@ document.getElementById('paymentForm').addEventListener('submit', function(event
     };
 
     // Отправка данных на сервер
-    fetch('YOUR_SERVER_ENDPOINT/payment', {
+    fetch('http://localhost:3000/payment', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
